@@ -8,17 +8,44 @@ const cnpj = {
   pattern: "^\\d{14}$",
 };
 
-const tiposDeConexao = ["monofasico", "bifasico", "trifasico"];
-
-const classesDeConsumo = [
-  "residencial",
-  "industrial",
-  "comercial",
-  "rural",
-  "poderPublico",
+const connectionTypes = {
+  SINGLE_PHASE: "monofasico",
+  BIPHASIC: "bifasico",
+  THREE_PHASE: "trifasico",
+};
+const tiposDeConexao = [
+  connectionTypes.SINGLE_PHASE,
+  connectionTypes.BIPHASIC,
+  connectionTypes.THREE_PHASE,
 ];
 
-const modalidadesTarifarias = ["azul", "branca", "verde", "convencional"];
+const consumeClass = {
+  HOME: "residencial",
+  INDUSTRY: "industrial",
+  COMMERCIAL: "comercial",
+  RURAL: "rural",
+  PUBLIC: "poderPublico",
+};
+const classesDeConsumo = [
+  consumeClass.HOME,
+  consumeClass.INDUSTRY,
+  consumeClass.COMMERCIAL,
+  consumeClass.RURAL,
+  consumeClass.PUBLIC,
+];
+
+const tariffModality = {
+  BLUE: "azul",
+  WHITE: "branca",
+  GREEN: "verde",
+  CONVENTIONAL: "convencional",
+};
+const modalidadesTarifarias = [
+  tariffModality.BLUE,
+  tariffModality.WHITE,
+  tariffModality.GREEN,
+  tariffModality.CONVENTIONAL,
+];
 
 module.exports = {
   cpf,
@@ -26,4 +53,7 @@ module.exports = {
   tiposDeConexao,
   classesDeConsumo,
   modalidadesTarifarias,
+  consumeClass,
+  connectionTypes,
+  tariffModality,
 };

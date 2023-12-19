@@ -1,3 +1,10 @@
+const { reasonsReject } = require("../constants/reasons");
+const {
+  consumeClass,
+  connectionTypes,
+  tariffModality,
+} = require("../constants/types");
+
 class EligibilityController {
   constructor() {
     this.check = this.check.bind(this);
@@ -13,14 +20,24 @@ class EligibilityController {
 
     let isEligible = true;
     const reasons = [];
-    if (!["residencial", "industrial", "comercial"].includes(classeDeConsumo)) {
+    if (
+      ![
+        consumeClass.HOME,
+        consumeClass.INDUSTRY,
+        consumeClass.COMMERCIAL,
+      ].includes(classeDeConsumo)
+    ) {
       isEligible = false;
-      reasons.push("Classe de consumo não aceita");
+      reasons.push(reasonsReject.CONSUME_CLASS_NOT_ACCEPT);
     }
 
-    if (!["branca", "convencional"].includes(modalidadeTarifaria)) {
+    if (
+      ![tariffModality.WHITE, tariffModality.CONVENTIONAL].includes(
+        modalidadeTarifaria
+      )
+    ) {
       isEligible = false;
-      reasons.push("Modalidade tarifária não aceita");
+      reasons.push(reasonsReject.TARIFF_MODALITY_NOT_ACCEPT);
     }
 
     let sum = 0;
@@ -28,17 +45,17 @@ class EligibilityController {
       sum += historicoDeConsumo[index];
     }
     let average = sum / 12;
-    if (tipoDeConexao === "monofasico" && average < 400) {
+    if (tipoDeConexao === connectionTypes.SINGLE_PHASE && average < 400) {
       isEligible = false;
-      reasons.push("Consumo muito baixo para tipo de conexão");
+      reasons.push(reasonsReject.LOW_CONSUME_TO_CONNECTION_TYPE);
     }
-    if (tipoDeConexao === "bifasico" && average < 500) {
+    if (tipoDeConexao === connectionTypes.BIPHASIC && average < 500) {
       isEligible = false;
-      reasons.push("Consumo muito baixo para tipo de conexão");
+      reasons.push(reasonsReject.LOW_CONSUME_TO_CONNECTION_TYPE);
     }
-    if (tipoDeConexao === "trifasico" && average < 750) {
+    if (tipoDeConexao === connectionTypes.THREE_PHASE && average < 750) {
       isEligible = false;
-      reasons.push("Consumo muito baixo para tipo de conexão");
+      reasons.push(reasonsReject.LOW_CONSUME_TO_CONNECTION_TYPE);
     }
 
     if (!isEligible) {
