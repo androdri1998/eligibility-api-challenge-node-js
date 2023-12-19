@@ -1,5 +1,5 @@
 const Fastify = require("fastify");
-const { validationSchema } = require("./schemas/validation.schema");
+const { eligibilitySchema } = require("./schemas/eligibility.schema");
 const EligibilityController = require("./controllers/Eligibility.controller");
 
 const server = Fastify({
@@ -10,7 +10,7 @@ const eligibilityController = new EligibilityController();
 
 server.post(
   "/check/eligibility",
-  { schema: validationSchema },
+  { schema: eligibilitySchema },
   eligibilityController.check
 );
 

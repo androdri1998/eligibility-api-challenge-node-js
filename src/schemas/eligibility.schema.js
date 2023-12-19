@@ -74,7 +74,7 @@ const output = {
   ],
 };
 
-const validationSchema = {
+const eligibilitySchema = {
   body: input,
   response: {
     200: output,
@@ -82,5 +82,5 @@ const validationSchema = {
 };
 
 module.exports = {
-  validationSchema,
+  eligibilitySchema,
 };
