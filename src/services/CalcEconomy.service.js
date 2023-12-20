@@ -3,10 +3,10 @@ class CalcEconomyService {
     this.execute = this.execute.bind(this);
   }
 
-  execute(sum) {
+  execute(total) {
     const KILOWATTS = 1000;
     const AVERAGE_CO2 = 84;
-    const economy = (sum / KILOWATTS) * AVERAGE_CO2;
+    const economy = (total / KILOWATTS) * AVERAGE_CO2;
 
     return economy;
   }
