@@ -11,6 +11,7 @@ Create a .env file using .env.example as a draft
 ```
 PORT=[AVAILABLE PORT]
 HOST=[AVAILABLE HOST]
+MOCK_DOCUMENT=[MOCK_DOCUMENT(CPF OR CNPJ FORMAT) TO BE USED ON TESTS]
 ```
 
 ## run application
