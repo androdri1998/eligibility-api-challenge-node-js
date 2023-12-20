@@ -5,10 +5,14 @@ class CheckEligibilityService {
     connectionTypeHelper,
     consumeClassHelper,
     tariffModalityHelper,
+    calcConsumeHistoryService,
+    calcEconomyService,
   }) {
     this.connectionTypeHelper = connectionTypeHelper;
     this.consumeClassHelper = consumeClassHelper;
     this.tariffModalityHelper = tariffModalityHelper;
+    this.calcConsumeHistoryService = calcConsumeHistoryService;
+    this.calcEconomyService = calcEconomyService;
 
     this.execute = this.execute.bind(this);
   }
@@ -16,6 +20,7 @@ class CheckEligibilityService {
   execute({ consumeClass, tariffModality, consumeHistory, connectionType }) {
     let isEligible = true;
     const reasons = [];
+
     if (!this.consumeClassHelper.isValidConsumeClass(consumeClass)) {
       isEligible = false;
       reasons.push(reasonsReject.CONSUME_CLASS_NOT_ACCEPT);
@@ -26,14 +31,8 @@ class CheckEligibilityService {
       reasons.push(reasonsReject.TARIFF_MODALITY_NOT_ACCEPT);
     }
 
-    let sum = 0;
-    for (let index = 0; index < consumeHistory.length - 1; index++) {
-      sum += consumeHistory[index];
-    }
-
-    const MONTHS = consumeHistory.length;
-    let average = sum / MONTHS;
-
+    let { average, total } =
+      this.calcConsumeHistoryService.execute(consumeHistory);
     if (
       !this.connectionTypeHelper.isEligibleConsumeToConnectionType(
         average,
@@ -51,10 +50,7 @@ class CheckEligibilityService {
       };
     }
 
-    const KILOWATTS = 1000;
-    const AVERAGE_CO2 = 84;
-    const economy = (sum / KILOWATTS) * AVERAGE_CO2;
-
+    const economy = this.calcEconomyService.execute(total);
     return {
       elegivel: isEligible,
       economiaAnualDeCO2: economy,
