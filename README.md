@@ -14,7 +14,7 @@ This is a challenge to practice Node.js
 
 ## run tests
 
-`$ npm run tests` to run unit tests.
+`$ npm run test` to run unit tests.
 
 # Available Routes
 
