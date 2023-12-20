@@ -1,11 +1,11 @@
-const { reasonsReject } = require("../constants/reasons");
+const { reasonsReject } = require("../constants/reasons-reject.constants");
 const {
   tiposDeConexao,
   classesDeConsumo,
   modalidadesTarifarias,
   cpf,
   cnpj,
-} = require("../constants/types");
+} = require("../constants/types.constants");
 
 const enumOf = (values) => ({
   type: typeof values[0],

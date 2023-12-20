@@ -1,9 +1,9 @@
-const { reasonsReject } = require("../constants/reasons");
+const { reasonsReject } = require("../constants/reasons-reject.constants");
 const {
   consumeClass,
   connectionTypes,
   tariffModality,
-} = require("../constants/types");
+} = require("../constants/types.constants");
 
 class EligibilityController {
   constructor() {
