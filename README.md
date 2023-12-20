@@ -18,12 +18,11 @@ This is a challenge to practice Node.js
 
 # Available Routes
 
-## POST /check/eligibility
-
-To check eligibility.
+## To check eligibility
 
 ```
 REQUEST
+POST /check/eligibility
 BODY {
   numeroDoDocumento: string
   tipoDeConexao: string
