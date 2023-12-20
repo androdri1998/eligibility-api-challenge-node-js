@@ -2,6 +2,21 @@
 
 This is a challenge to practice Node.js
 
+# Setup application
+
+## Create .env file
+
+Create a .env file using .env.example as a draft
+
+```
+PORT=[AVAILABLE PORT]
+HOST=[AVAILABLE HOST]
+```
+
+## run application
+
+run `$ npm start`
+
 # Available Commands
 
 ## start application
