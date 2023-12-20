@@ -19,7 +19,7 @@ const tiposDeConexao = [
   connectionTypes.THREE_PHASE,
 ];
 
-const consumeClass = {
+const consumeClasses = {
   HOME: "residencial",
   INDUSTRY: "industrial",
   COMMERCIAL: "comercial",
@@ -27,24 +27,24 @@ const consumeClass = {
   PUBLIC: "poderPublico",
 };
 const classesDeConsumo = [
-  consumeClass.HOME,
-  consumeClass.INDUSTRY,
-  consumeClass.COMMERCIAL,
-  consumeClass.RURAL,
-  consumeClass.PUBLIC,
+  consumeClasses.HOME,
+  consumeClasses.INDUSTRY,
+  consumeClasses.COMMERCIAL,
+  consumeClasses.RURAL,
+  consumeClasses.PUBLIC,
 ];
 
-const tariffModality = {
+const tariffModalities = {
   BLUE: "azul",
   WHITE: "branca",
   GREEN: "verde",
   CONVENTIONAL: "convencional",
 };
 const modalidadesTarifarias = [
-  tariffModality.BLUE,
-  tariffModality.WHITE,
-  tariffModality.GREEN,
-  tariffModality.CONVENTIONAL,
+  tariffModalities.BLUE,
+  tariffModalities.WHITE,
+  tariffModalities.GREEN,
+  tariffModalities.CONVENTIONAL,
 ];
 
 module.exports = {
@@ -53,7 +53,7 @@ module.exports = {
   tiposDeConexao,
   classesDeConsumo,
   modalidadesTarifarias,
-  consumeClass,
+  consumeClasses,
   connectionTypes,
-  tariffModality,
+  tariffModalities,
 };
