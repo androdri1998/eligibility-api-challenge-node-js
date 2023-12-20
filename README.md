@@ -1,4 +1,4 @@
-# challenge-node-js
+# eligibility-api-challenge-node-js
 
 This is a challenge to practice Node.js
 
