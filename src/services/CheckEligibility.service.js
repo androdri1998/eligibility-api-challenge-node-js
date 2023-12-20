@@ -1,12 +1,10 @@
 const { reasonsReject } = require("../constants/reasons-reject.constants");
-const {
-  consumeClasses,
-  tariffModalities,
-} = require("../constants/types.constants");
+const { tariffModalities } = require("../constants/types.constants");
 
 class CheckEligibilityService {
-  constructor({ connectionTypeHelper }) {
+  constructor({ connectionTypeHelper, consumeClassHelper }) {
     this.connectionTypeHelper = connectionTypeHelper;
+    this.consumeClassHelper = consumeClassHelper;
 
     this.execute = this.execute.bind(this);
   }
@@ -14,13 +12,7 @@ class CheckEligibilityService {
   execute({ consumeClass, tariffModality, consumeHistory, connectionType }) {
     let isEligible = true;
     const reasons = [];
-    if (
-      ![
-        consumeClasses.HOME,
-        consumeClasses.INDUSTRY,
-        consumeClasses.COMMERCIAL,
-      ].includes(consumeClass)
-    ) {
+    if (!this.consumeClassHelper.isValidConsumeClass(consumeClass)) {
       isEligible = false;
       reasons.push(reasonsReject.CONSUME_CLASS_NOT_ACCEPT);
     }
