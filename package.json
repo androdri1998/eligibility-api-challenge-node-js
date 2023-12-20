@@ -1,5 +1,5 @@
 {
-  "name": "challenge-node-js",
+  "name": "eligibility-api-node-js",
   "version": "1.0.0",
   "description": "This is a challenge to practice Node.js",
   "main": "index.js",

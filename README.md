@@ -14,9 +14,13 @@ HOST=[AVAILABLE HOST]
 MOCK_DOCUMENT=[MOCK_DOCUMENT(CPF OR CNPJ FORMAT EXAMPLE 00000000000) TO BE USED ON TESTS]
 ```
 
+## Install application dependencies
+
+run `$ npm intall` to install dependecies.
+
 ## run application
 
-run `$ npm start`
+run `$ npm start` to run application.
 
 # Available Commands
 
