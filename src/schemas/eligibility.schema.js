@@ -1,3 +1,4 @@
+const { reasonsReject } = require("../constants/reasons");
 const {
   tiposDeConexao,
   classesDeConsumo,
@@ -63,9 +64,9 @@ const output = {
           items: {
             type: "string",
             enum: [
-              "Classe de consumo não aceita",
-              "Modalidade tarifária não aceita",
-              "Consumo muito baixo para tipo de conexão",
+              reasonsReject.CONSUME_CLASS_NOT_ACCEPT,
+              reasonsReject.TARIFF_MODALITY_NOT_ACCEPT,
+              reasonsReject.LOW_CONSUME_TO_CONNECTION_TYPE,
             ],
           },
         },
