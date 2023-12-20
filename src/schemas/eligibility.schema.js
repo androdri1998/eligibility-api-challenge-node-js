@@ -28,7 +28,6 @@ const input = {
     classeDeConsumo: enumOf(classesDeConsumo),
     modalidadeTarifaria: enumOf(modalidadesTarifarias),
     historicoDeConsumo: {
-      // em kWh
       type: "array",
       minItems: 3,
       maxItems: 12,
@@ -48,7 +47,7 @@ const output = {
       additionalProperties: false,
       required: ["elegivel", "economiaAnualDeCO2"],
       properties: {
-        elegivel: enumOf([true]), // always true
+        elegivel: enumOf([true]),
         economiaAnualDeCO2: { type: "number", minimum: 0 },
       },
     },
@@ -57,7 +56,7 @@ const output = {
       additionalProperties: false,
       required: ["elegivel", "razoesDeInelegibilidade"],
       properties: {
-        elegivel: enumOf([false]), // always false
+        elegivel: enumOf([false]),
         razoesDeInelegibilidade: {
           type: "array",
           uniqueItems: true,
