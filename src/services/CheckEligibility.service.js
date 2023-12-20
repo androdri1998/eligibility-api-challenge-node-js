@@ -1,10 +1,14 @@
 const { reasonsReject } = require("../constants/reasons-reject.constants");
-const { tariffModalities } = require("../constants/types.constants");
 
 class CheckEligibilityService {
-  constructor({ connectionTypeHelper, consumeClassHelper }) {
+  constructor({
+    connectionTypeHelper,
+    consumeClassHelper,
+    tariffModalityHelper,
+  }) {
     this.connectionTypeHelper = connectionTypeHelper;
     this.consumeClassHelper = consumeClassHelper;
+    this.tariffModalityHelper = tariffModalityHelper;
 
     this.execute = this.execute.bind(this);
   }
@@ -17,11 +21,7 @@ class CheckEligibilityService {
       reasons.push(reasonsReject.CONSUME_CLASS_NOT_ACCEPT);
     }
 
-    if (
-      ![tariffModalities.WHITE, tariffModalities.CONVENTIONAL].includes(
-        tariffModality
-      )
-    ) {
+    if (!this.tariffModalityHelper.isValidTariffModality(tariffModality)) {
       isEligible = false;
       reasons.push(reasonsReject.TARIFF_MODALITY_NOT_ACCEPT);
     }
