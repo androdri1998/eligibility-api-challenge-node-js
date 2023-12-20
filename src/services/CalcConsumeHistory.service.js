@@ -5,7 +5,7 @@ class CalcConsumeHistoryService {
 
   execute(consumeHistory) {
     let total = 0;
-    for (let index = 0; index < consumeHistory.length - 1; index++) {
+    for (let index = 0; index < consumeHistory.length; index++) {
       total += consumeHistory[index];
     }
 
