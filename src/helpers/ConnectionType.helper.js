@@ -21,7 +21,7 @@ class ConnectionTypeHelper {
     const isEligible =
       minConsumeToConnectionType && average >= minConsumeToConnectionType;
 
-    return isEligible;
+    return !!isEligible;
   }
 }
 

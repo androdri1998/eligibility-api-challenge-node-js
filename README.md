@@ -16,6 +16,10 @@ This is a challenge to practice Node.js
 
 `$ npm run test` to run unit tests.
 
+## run tests in watching mode
+
+`$ npm run test:watch` to run unit tests in watching mode.
+
 # Available Routes
 
 ## To check eligibility

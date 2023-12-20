@@ -4,6 +4,7 @@
   "description": "This is a challenge to practice Node.js",
   "main": "index.js",
   "scripts": {
+    "test:watch": "jest -- --watch",
     "test": "jest",
     "start": "node index.js",
     "dev": "nodemon index.js"
