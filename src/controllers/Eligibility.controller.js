@@ -44,16 +44,33 @@ class EligibilityController {
     for (let index = 0; index < historicoDeConsumo.length - 1; index++) {
       sum += historicoDeConsumo[index];
     }
-    let average = sum / 12;
-    if (tipoDeConexao === connectionTypes.SINGLE_PHASE && average < 400) {
+
+    const MONTHS = 12;
+    let average = sum / MONTHS;
+
+    const MIN_CONSUME_TO_SINGLE_PHASE = 400;
+    if (
+      tipoDeConexao === connectionTypes.SINGLE_PHASE &&
+      average < MIN_CONSUME_TO_SINGLE_PHASE
+    ) {
       isEligible = false;
       reasons.push(reasonsReject.LOW_CONSUME_TO_CONNECTION_TYPE);
     }
-    if (tipoDeConexao === connectionTypes.BIPHASIC && average < 500) {
+
+    const MIN_CONSUME_TO_BIPHASIC = 500;
+    if (
+      tipoDeConexao === connectionTypes.BIPHASIC &&
+      average < MIN_CONSUME_TO_BIPHASIC
+    ) {
       isEligible = false;
       reasons.push(reasonsReject.LOW_CONSUME_TO_CONNECTION_TYPE);
     }
-    if (tipoDeConexao === connectionTypes.THREE_PHASE && average < 750) {
+
+    const MIN_CONSUME_TO_THREE_PHASE = 750;
+    if (
+      tipoDeConexao === connectionTypes.THREE_PHASE &&
+      average < MIN_CONSUME_TO_THREE_PHASE
+    ) {
       isEligible = false;
       reasons.push(reasonsReject.LOW_CONSUME_TO_CONNECTION_TYPE);
     }
@@ -65,7 +82,9 @@ class EligibilityController {
       });
     }
 
-    const economy = (sum / 1000) * 84;
+    const KILOWATTS = 1000;
+    const AVERAGE_CO2 = 84;
+    const economy = (sum / KILOWATTS) * AVERAGE_CO2;
 
     reply.send({
       elegivel: isEligible,
